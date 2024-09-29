@@ -1,10 +1,31 @@
+debugger and several tools for x64/x86 windows.
+
+in local system debugging:
+debugger let debug several processes at once, debug or only attach (without actual debugging) to process, for view it memory/modules, let debug protected processes, debug from first instruction in user mode, detach from debugged process, view kernel memory and modules. auto debug child processes, trace function execution, work on winlogon desktop, etc. patially supported source code mode.
+
+supported KDNET network kernel debugging (ipv4 or ipv6). setup guest same as for windbg.
+however this mode not very developed and stable - the main mode for me is local debugging
+
+partially supported memory dump analyze (not supported minidump)
+
+The debugger is focused on local system debugging, maximum performance, minimum resource consumption and minimum size.
+
+many things are not intuitive and are not clearly presented in the interface. so using all its functionality will be very problematic, but as it is. the package is designed for a certain debugging style (probably, just as there are different styles of writing code, there can be different styles in this area) and is written for one specific person. in any case, for its effecient use it, a lot of experience and knowledge in the subject is required
+
+
 debugger:
+
 F11 - step into
+
 F10 - step over
 The difference between a call instruction, whether to step inside or not, and a rep
+
 F5 - go
+
 F4 - build a call tree 🌲 - traces all instructions using trace flag until the stack pointer becomes greater than the initial one. Usually it makes sense to press F4 only on the first instruction of a function. The built tree can be saved and viewed later in treeview.exe (it is better to run it as admin the first time, so that it can register the .tvi extension in shell)
+
 F12 - do not process the exception we stopped at, but pass it to application. Usually makes sense for breakpoint, single step exceptions. Some programs, as an anti-debugging trick, deliberately generate such exceptions, because debuggers usually always stop on them and continue with the next instruction. Whereas without a debugger, SEH/VEH would have worked. My debugger allows you to set - do not stop it is a first chance exception for them (i.e. do not process the breakpoint if I did not set it) but if we forgot to do this and understand that this is not a debug assert but specifically against the debugger, then we can press F12.
+
 F9 toggle breakpoint on selected line
 
 In remote debug mode - break/pause button to pause under the debugger.
