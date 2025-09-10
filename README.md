@@ -1,4 +1,4 @@
-debugger and several tools for x64/x86 windows.
+debugger and several tools for x64/x86 windows. ++
 
 in local system debugging:
 debugger let debug several processes at once, debug or only attach (without actual debugging) to process, for view it memory/modules, let debug protected processes, debug from first instruction in user mode, detach from debugged process, view kernel memory and modules. auto debug child processes, trace function execution, work on winlogon desktop, etc. patially supported source code mode.
